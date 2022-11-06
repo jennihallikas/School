@@ -51,3 +51,51 @@ while distance < 10000:
 for car in carList:
     print(f"{car.reg_num}, {car.max_speed}km/h, {car.distance}km")
 
+# 4 ex.10
+class Race:
+    def __init__(self, name, km, car_list):
+        self.name = name
+        self.km = km
+        self.car_list = car_list
+
+    def hour_passes(self):
+        for c in self.car_list:
+            c.accelerate(random.randint(-10, 15))
+            c.drive(1)
+
+
+    def print_status(self):
+        print(self.name + ":")
+        for c in self.car_list:
+            print(f"{c.reg_num:6s}: {c.current:3d}, {c.distance} km")
+        return self.car_list
+
+
+    def race_finished(self):
+        for c in self.car_list:
+            if c.distance < self.km:
+                return False
+        return True
+
+car_list = []
+for i in range(10):
+    car_list.append(Car("ABC-" + str(i+1), random.randint(0,100)))
+
+
+race = Race("Grand Demolition Derby", 8000, car_list)
+n = 0
+
+
+for i in range(10):
+    n += 1
+    print(i)
+    if race.race_finished():
+        break
+    race.hour_passes()
+
+    if i%10 == 0:
+        print(race)
+
+print(f"The final result after {n} hours is:")
+race.print_status()
+
