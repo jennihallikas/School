@@ -44,10 +44,10 @@ class Building:
             i.go_to_floor(0)
 
 
-b = Building(1, 10, 20)
+b = Building(10, 1, 3)
 
 b.run_elevator(1, 3)
-b.run_elevator(3, 4)
+b.run_elevator(2, 4)
 b.run_elevator(3, 1)
 
 b.fire_alarm()
