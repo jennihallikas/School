@@ -20,6 +20,10 @@ class Car:
     def drive(self, hours):
         self.distance += self.current*hours
 
+    def __int__(self, current):
+        self.current = current
+
+
 
 ferrari = Car("ABC", 142)
 print(f"{ferrari.reg_num}, {ferrari.max_speed}")
@@ -98,4 +102,32 @@ for i in range(10):
 
 print(f"The final result after {n} hours is:")
 race.print_status()
+# ex.11, 2
+class ElectricCar(Car):
+    def __init__(self, reg_num, max_speed, capacity):
+        self.capacity = capacity
+        super().__init__(reg_num, max_speed)
 
+    def print_information(self):
+        print(f"The electric car with reg number {self.reg_num} has travelled {self.distance} km, current speed is {self.current} and capacity of battery is {self.capacity}")
+
+class GasolineCar(Car):
+    def __init__(self, reg_num, max_speed, volume):
+        self.volume = volume
+        super().__init__(reg_num, max_speed)
+
+    def print_information(self):
+        print(f"The gasoline car with a reg num {self.reg_num} has travelled {self.distance} km, current speed is {self.current} and it has {self.volume} liters")
+
+
+e = ElectricCar("EFK-12", 111, 70)
+g = GasolineCar("HHH-12", 222, 64)
+
+e.current = 200
+g.current = 152
+
+e.drive(3)
+g.drive(3)
+
+e.print_information()
+g.print_information()
